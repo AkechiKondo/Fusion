@@ -1,6 +1,10 @@
-import * as React from 'react'
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text } from 'react-native'
+import React from 'react'
 
 export default function Footer() {
-    
+  return (
+    <View>
+      <Text>Footer</Text>
+    </View>
+  )
 }

@@ -1,27 +1,12 @@
-import { Button } from '@rneui/base';
-import * as React from 'react'
-import { View, Text, ScrollView } from 'react-native';
-
+import { View, Text } from 'react-native'
+import React from 'react'
+import { DataContext } from './../provider/DataProvider';
 
 export default function MessageListScreen() {
-
+    useContext(DataContext);
     return (
         <View>
-            <ScrollView>
-                
-            </ScrollView>
-            <View style={styles.buttonView}>
-                <Button>
-                    
-                </Button>
-            </View>
+           <Text>MessageListScreen</Text>
         </View>
     )
 }
-
-const styles  = StyleSheet.create({
-    buttonView : {
-        flex: 1,
-        flexDirection: 'row',
-    }
-});

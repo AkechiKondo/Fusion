@@ -10,19 +10,18 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import Header from './src/component/Header';
-import AuthProvider from './src/provider/DataProvider';
+import { DataProvider } from './src/provider/DataProvider';
 import WholeContainer from './src/container/WholeContainer';
-
+import Header from './src/component/Header'
 
 export default App = () => {
   return (
     <SafeAreaProvider>
-      <View>
+      <View style={{flex: 1}}>
         <Header />
-        <AuthProvider >
+        <DataProvider>
           <WholeContainer />          
-        </AuthProvider>
+        </DataProvider>
       </View>
     </SafeAreaProvider>
   )

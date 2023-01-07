@@ -5,16 +5,16 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import MessageListScreen from '../screen/MessageListScreen';
 import NewMessageScreen from '../screen/NewMessageScreen';
-import ViewMessageScreenn from '../screen/ViewMessageScreenn';
+import ViewMessageScreen from '../screen/ViewMessageScreen';
 
 const Stack = createNativeStackNavigator();
 
 export default function InboxContainer() {
-    <NavigationContainer>
+    <NavigationContainer independent={true}>
         <Stack.Navigator>
             <Stack.Screen name="MessageList" component={MessageListScreen} />
             <Stack.Screen name="NewMessage" component={NewMessageScreen} />
-            <Stack.Screen name="ViewMessage" component={ViewMessageScreenn} />
+            <Stack.Screen name="ViewMessage" component={ViewMessageScreen} />
         </Stack.Navigator>
     </NavigationContainer>
 }

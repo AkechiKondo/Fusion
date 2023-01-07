@@ -1,7 +1,5 @@
-import config from "../config";
 
-
-export const logIn = (username, password) => {
+export const getUser = (token) => {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -11,7 +9,7 @@ export const logIn = (username, password) => {
             f: 'json'
         })
     };
-    fetch(config.mainUrl + config.generateToken, requestOptions)
+    fetch(apiUrl.mainUrl, requestOptions)
         .then(response => response.json())
         .then(
             data => {

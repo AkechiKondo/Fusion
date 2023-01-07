@@ -1,47 +1,50 @@
-import * as React from 'react'
-import { View, ScrollView } from 'react-native';
-import { Text, Input, Button } from '@rneui/themed';
+import { useState, useContext } from 'react'
+import React from 'react'
+import { StyleSheet, View, ScrollView, TextInput } from 'react-native';
+import { Text, Input, Button, CheckBox, Icon } from '@rneui/themed';
+
 
 import { logIn } from './../api/login';
-import { DataProvider } from '../provider/DataProvider';
+import { DataContext } from '../provider/DataProvider';
 
 export default function SignInScreen({navigation}) {
     const [checkRemember, setCheckRemember] = useState(false);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [ data, setData ] = useContext(DataProvider);
+    const {userToken: [userToken, setUserToken]} = useContext(DataContext);
     return (
-        <View style={{ flex: 1 }}>
-            <View style={styles.formView}>
+        <View>
+            {/* <View style={styles.formView}>
                 <View style={styles.titleView}>
-                    <Text h3>
+                    <Text h4 style={{textAlign: 'center'}}>
                         Please enter your login information
                     </Text>
-                    <View>
-                        <Input 
+                    <View> */}
+                        <TextInput 
                             placeholder="Username*" 
                             onChangeText={value => setUsername(value)}
+                            value={username}
                         />
-                        <Input 
+                        {/* <Input 
                             placeholder="Password*" 
                             onChangeText={value => setPassword(value)}
+                            value={password}
                         />
                         <View style={{ flexDirection: 'row' }}>
                             <CheckBox
                                 center
-                                title="Click Here"
-                                checked={check1}
-                                onPress={() => setCheckRemember(checkRemember)}
+                                title="Remember Me"
+                                checked={checkRemember}
+                                checkedIcon="dot-circle-o"
+                                uncheckedIcon="circle-o"  
+                                onPress={() => setCheckRemember(!checkRemember)}
                             />
                             <Button 
                                 title={'LOG IN'}
                                 onPress={() => {
                                     const res = logIn(username, password);
                                     if(res.success) {
-                                        setData({
-                                            ...data,
-                                            token: res.data.token
-                                        });
+                                        setUserToken(res.data.token);
                                         navigation.navigate('MainFrame');
                                     }
                                 }}
@@ -49,7 +52,7 @@ export default function SignInScreen({navigation}) {
                         </View>
                     </View>
                 </View>
-            </View>
+            </View> */}
         </View>
         
     )
@@ -57,10 +60,9 @@ export default function SignInScreen({navigation}) {
 
 const styles = StyleSheet.create({
     titleView: {
-        alignItems: 'center',
-        flex: 1
+        top: 50
     },
     formView: {
-        alignItems: 'center'
+       alignContent: 'center'
     }
   });
