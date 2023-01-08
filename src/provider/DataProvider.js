@@ -6,10 +6,13 @@ export const DataProvider = ({ children }) => {
     const [ isSignout, setIsSignout ] = useState(true);
     const [ userToken, setUserToken ] = useState('');
     const [ msgList, setMsgList ] = useState([]);
+    const [ userid, setUserid ] = useState('');
     
     const store = {
         isSignout: [ isSignout, setIsSignout ],
-        userToken: [ userToken, setUserToken ]
+        userToken: [ userToken, setUserToken ],
+        msgList: [ msgList, setMsgList ],
+        userid: [ userid, setUserid ]
     }
     return (
         <DataContext.Provider value={store}>

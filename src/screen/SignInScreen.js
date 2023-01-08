@@ -6,6 +6,7 @@ import { Text, Input, Button, CheckBox, Icon } from '@rneui/themed';
 
 import { logIn } from './../api/login';
 import { DataContext } from '../provider/DataProvider';
+import { getUser } from '../api/getUser';
 
 export default function SignInScreen({navigation}) {
     const [checkRemember, setCheckRemember] = useState(false);
@@ -14,18 +15,18 @@ export default function SignInScreen({navigation}) {
     const {userToken: [userToken, setUserToken]} = useContext(DataContext);
     return (
         <View>
-            {/* <View style={styles.formView}>
+            <View style={styles.formView}>
                 <View style={styles.titleView}>
                     <Text h4 style={{textAlign: 'center'}}>
                         Please enter your login information
                     </Text>
-                    <View> */}
+                    <View>
                         <TextInput 
                             placeholder="Username*" 
                             onChangeText={value => setUsername(value)}
                             value={username}
                         />
-                        {/* <Input 
+                        <Input 
                             placeholder="Password*" 
                             onChangeText={value => setPassword(value)}
                             value={password}
@@ -45,6 +46,7 @@ export default function SignInScreen({navigation}) {
                                     const res = logIn(username, password);
                                     if(res.success) {
                                         setUserToken(res.data.token);
+                                        const user = getUser(userToken);
                                         navigation.navigate('MainFrame');
                                     }
                                 }}
@@ -52,7 +54,7 @@ export default function SignInScreen({navigation}) {
                         </View>
                     </View>
                 </View>
-            </View> */}
+            </View>
         </View>
         
     )

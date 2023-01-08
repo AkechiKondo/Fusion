@@ -1,14 +1,16 @@
 import config from "../config";
 
-export const getUser = (token) => {
+export const deleteMsg = (userid, msgid) => {
     const requestOptions = {
-        method: 'GET',
+        method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` },
-        body: JSON.stringify({ 
-            f: 'json'
+        body: JSON.stringify({
+            f: 'json',
+            userid,
+            msgid
         })
     };
-    fetch(config.mainUrl + config.getUserUrl, requestOptions)
+    fetch(config.mainUrl + 'users/' + userid + '/events/' + msgid + '/delete', requestOptions)
         .then(response => response.json())
         .then(
             data => {

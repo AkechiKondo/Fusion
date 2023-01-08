@@ -14,7 +14,7 @@ export default function InboxContainer() {
         <Stack.Navigator>
             <Stack.Screen name="MessageList" component={MessageListScreen} />
             <Stack.Screen name="NewMessage" component={NewMessageScreen} />
-            <Stack.Screen name="ViewMessage" component={ViewMessageScreen} />
+            <Stack.Screen name="ShowMessage" component={ViewMessageScreen} />
         </Stack.Navigator>
     </NavigationContainer>
 }

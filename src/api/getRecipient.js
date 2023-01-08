@@ -1,14 +1,12 @@
 import config from "../config";
 
-export const getUser = (token) => {
+export const getRecipients = (args) => {
     const requestOptions = {
-        method: 'GET',
+        method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` },
-        body: JSON.stringify({ 
-            f: 'json'
-        })
+        body: JSON.stringify(args)
     };
-    fetch(config.mainUrl + config.getUserUrl, requestOptions)
+    fetch(config.mainUrl + config.getRecipients, requestOptions)
         .then(response => response.json())
         .then(
             data => {

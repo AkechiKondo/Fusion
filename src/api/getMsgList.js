@@ -1,14 +1,20 @@
 import config from "../config";
 
-export const getUser = (token) => {
+export const getMsgList = (userid, offset, limit, filterField, filterValue, orderBy) => {
     const requestOptions = {
-        method: 'GET',
+        method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` },
-        body: JSON.stringify({ 
-            f: 'json'
+        body: JSON.stringify({
+            f: 'json',
+            userid,
+            offset, 
+            limit,
+            filterField,
+            filterValue,
+            orderBy
         })
     };
-    fetch(config.mainUrl + config.getUserUrl, requestOptions)
+    fetch(config.mainUrl + 'users/' + userid + 'events', requestOptions)
         .then(response => response.json())
         .then(
             data => {
